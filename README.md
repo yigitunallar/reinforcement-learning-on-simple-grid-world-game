@@ -28,7 +28,8 @@ It is a type of algorithm used to calculate state-action values. It is a member 
 > Q (St, At)← Q(St, At)+α[Rt+1+γmaxQ(St+1, at+1)−Q(St, At)]
 
 Our Q (s, a) function does not have to be a lookup table. In most problems, state-action space is much too large to store in a table. What we need is some way to generalize and pattern match between states. This is exactly where neural networks come in. We can use a neural network, instead of a lookup table, as our Q(s ,a) function. It will simply accept a state and an action and spit out the value of that state-action. As for the neural network weights, our Q function will actually look like this: Q (s, a, theta). Instead of iteratively updating values in a table, we will iteratively update the theta parameters of our neural network so that it learns to provide us with better estimates of state-action values. Since the neural network is not a table, we do not use the formula shown above. For any state-action that just happened, our target would be,
-rt+1+γ∗ maxQ(s′,a′)
+> rt+1+γ∗ maxQ(s′,a′)
+
 γ is a parameter 0 -> 1, that is called discount factor. It determines how much each future reward is taken into consideration for updating our Q-values. s′ and a′ are used interchangeably with s t+1 and a t+1. Except for the terminal state, our reward update is carried out using the formula above. As for the terminal state, the reward update is simply r t+1. There are 2 terminal states; the state where the agent fell into the pit and receives -10, and the state where the player has reached the goal and receives +10.
 
 ### On-policy vs. Off-Policy
